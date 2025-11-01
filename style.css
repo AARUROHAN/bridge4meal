@@ -1,0 +1,13 @@
+.book-btn{
+  margin-top: 6px;
+  width: 100%;
+  padding: 6px 0;
+  font-size: 14px;
+  border-radius: 6px;
+  background: linear-gradient(to right, #ec4899, #3b82f6);
+  color: white;
+  transition: 0.2s;
+}
+.book-btn:hover{
+  opacity: 0.9;
+}

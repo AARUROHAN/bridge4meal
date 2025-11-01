@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Bridge4Meal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="assets/logo.png" alt="Bridge4Meal Logo" class="h-10 w-10 object-contain">
+        <span class="text-xl font-semibold text-gray-800">Bridge4Meal</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-gray-700 font-medium">
+        <a href="#home" class="hover:text-blue-600">Home</a>
+        <a href="#services" class="hover:text-blue-600">Services</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+        <a href="join.html" class="hover:text-blue-600">Join as Worker</a>
+        <a id="navSign" href="login.html" class="px-3 py-1 border rounded text-pink-500">Sign In / Sign Up</a>
+        <button id="logoutBtn" class="px-3 py-1 border rounded hidden">Logout</button>
+      </nav>
+
+      <button id="mobileMenuBtn" class="md:hidden text-3xl text-gray-700">☰</button>
+    </div>
+
+    <div id="mobileMenu" class="hidden bg-white px-6 pb-4 flex flex-col gap-3 text-gray-700 font-medium md:hidden">
+      <a href="#home" class="hover:text-blue-600">Home</a>
+      <a href="#services" class="hover:text-blue-600">Services</a>
+      <a href="#contact" class="hover:text-blue-600">Contact</a>
+      <a href="join.html" class="hover:text-blue-600">Join as Worker</a>
+      <a id="mobileSign" href="login.html" class="px-3 py-1 border rounded text-pink-500">Sign In / Sign Up</a>
+      <button id="bookWorkerBtnMobile" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Book Worker</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="pt-28 pb-16 text-center bg-gradient-to-br from-pink-50 via-blue-50 to-white">
+    <h1 class="text-4xl sm:text-5xl font-bold mb-3">Hire Trusted Workers.<br/>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-blue-500">Feed Someone in Need.</span>
+    </h1>
+    <p class="text-gray-600 max-w-2xl mx-auto">Register & login to book a worker — each booking feeds a meal.</p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-center mb-6">Our Services</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+        <!-- SERVICE TEMPLATE -->
+        <script>
+          const services = [
+            "Mason (Raj Mistri)", "Helper", "Carpenter", "Electrician", "Construction Worker",
+            "Bar Bender", "AC / Fridge Repair Technician", "Bike / Auto Repair Mechanic",
+            "Polisher", "Painter", "House Cleaner / Maid / Sweeper", "Cook",
+            "Gardener", "Security Guard", "Car Cleaner / Driver"
+          ];
+          document.write(
+            services.map(s=>`
+              <div class="service-card">
+                ${s}
+                <button onclick="serviceClickHandler('${s}')" class="mt-2 px-3 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700">Book Now</button>
+              </div>
+            `).join('')
+          );
+        </script>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-12 bg-blue-50">
+    <div class="max-w-3xl mx-auto px-4 text-center space-y-2">
+      <h3 class="font-bold text-xl mb-3">Contact</h3>
+      <p>📞 <a href="tel:+919103595615" class="text-blue-600">+91 9103595615</a></p>
+      <p>📞 <a href="tel:+919797548434" class="text-blue-600">+91 9797548434</a></p>
+      <p>✉️ <a href="mailto:bridge4meal@gmail.com" class="text-blue-600">bridge4meal@gmail.com</a></p>
+      <p class="mt-3">💬 Quick help on WhatsApp:
+        <a class="text-green-600 font-semibold" href="https://wa.me/919797548434" target="_blank">Click here</a>
+      </p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

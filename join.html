@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Join as Worker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-blue-50 flex items-center justify-center min-h-screen">
+<div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+  <h2 class="text-2xl font-bold mb-4 text-center">Join as Worker</h2>
+  <form id="joinForm" class="space-y-3">
+    <input name="name" placeholder="Full Name" class="w-full px-3 py-2 border rounded" required/>
+    <input name="email" placeholder="Email" class="w-full px-3 py-2 border rounded" required/>
+    <select name="service" class="w-full px-3 py-2 border rounded" required>
+      <option value="">Select Service</option>
+      <option>Mason (Raj Mistri)</option><option>Helper</option><option>Carpenter</option>
+      <option>Electrician</option><option>Construction Worker</option><option>Bar Bender</option>
+      <option>AC / Fridge Repair Technician</option><option>Bike / Auto Repair Mechanic</option>
+      <option>Polisher</option><option>Painter</option><option>House Cleaner / Maid / Sweeper</option>
+      <option>Cook</option><option>Gardener</option><option>Security Guard</option>
+      <option>Car Cleaner / Driver</option>
+    </select>
+    <input name="mobile" placeholder="Mobile Number" class="w-full px-3 py-2 border rounded" required/>
+    <input name="address" placeholder="Address" class="w-full px-3 py-2 border rounded" required/>
+    <button type="submit" class="w-full py-2 bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded">Join</button>
+  </form>
+</div>
+
+<script>
+emailjs.init("HWCoTybKtzkaS17Gh");
+
+// call the function from index.js (registerWorkerWorkerForm)
+const joinForm = document.getElementById('joinForm');
+joinForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const data = {
+    name: this.name.value.trim(),
+    email: this.email.value.trim(),
+    service: this.service.value,
+    mobile: this.mobile.value.trim(),
+    address: this.address.value.trim()
+  };
+  // call function loaded from script.js (we expect script.js included on index or add it here)
+  // We'll do a small in-page fallback if registerWorkerWorkerForm is not found
+  if(typeof registerWorkerWorkerForm === 'function'){
+    const res = registerWorkerWorkerForm(data);
+    if(!res.ok) alert(res.msg);
+    else { alert('Joined successfully'); window.location.href = 'index.html'; }
+  } else {
+    // fallback: local store & email
+    const workers = JSON.parse(localStorage.getItem('b4m_workers')||'[]');
+    if(workers.find(w=>w.mobile===data.mobile)){ alert('Worker with this mobile exists'); return; }
+    workers.push({...data, joinedAt: new Date().toISOString()});
+    localStorage.setItem('b4m_workers', JSON.stringify(workers));
+    // email notify
+    emailjs.send('service_4jhdrif','template_nhc5g66',{ subject:'New Worker', message: JSON.stringify(data) })
+      .then(()=> { alert('Joined!'); window.location.href='index.html'; })
+      .catch(err=> { alert('Joined (email failed)'); window.location.href='index.html'; });
+  }
+});
+</script>
+</body>
+</html>

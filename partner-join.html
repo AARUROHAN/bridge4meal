@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Become a Partner - Bridge4Meal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-blue-50 font-sans text-gray-800 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="assets/logo.png" alt="Bridge4Meal Logo" class="h-10 w-10 object-contain">
+        <span class="text-xl font-semibold text-gray-800">Bridge4Meal</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-gray-700 font-medium">
+        <a href="index.html#home" class="hover:text-blue-600">Home</a>
+        <a href="partners.html" class="hover:text-blue-600">Partners</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- FORM SECTION -->
+  <main class="flex-1 pt-28 pb-16">
+    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-2xl p-8">
+      <h1 class="text-3xl font-bold mb-2 text-center">Become a Partner</h1>
+      <p class="text-gray-600 text-center mb-8">Join the Bridge4Meal Partner Network and grow your business with us.</p>
+
+      <form id="partnerForm" class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Shop Name</label>
+            <input id="shopName" type="text" class="w-full border rounded-lg px-4 py-2" required />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Owner Name</label>
+            <input id="ownerName" type="text" class="w-full border rounded-lg px-4 py-2" required />
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Email</label>
+            <input id="email" type="email" class="w-full border rounded-lg px-4 py-2" required />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Phone</label>
+            <input id="phone" type="tel" class="w-full border rounded-lg px-4 py-2" required />
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Locality / Area</label>
+            <input id="locality" type="text" class="w-full border rounded-lg px-4 py-2" required />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Category</label>
+            <select id="category" class="w-full border rounded-lg px-4 py-2" required>
+              <option value="">Select Category</option>
+              <option>Paints & Hardware</option>
+              <option>Electrical</option>
+              <option>Sanitary & Tiles</option>
+              <option>Tools & Machinery</option>
+              <option>Wood & Carpentry</option>
+              <option>Others</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Shop Logo (optional)</label>
+          <input id="logo" type="file" accept="image/*" class="w-full border rounded-lg px-4 py-2 bg-white" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">About Your Shop</label>
+          <textarea id="about" rows="3" class="w-full border rounded-lg px-4 py-2" placeholder="Tell us what you sell, services you offer, or your experience..." required></textarea>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="mt-4 px-8 py-3 bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-lg shadow hover:opacity-90 transition">
+            Submit Application
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    emailjs.init("HWCoTybKtzkaS17Gh"); // your EmailJS public key
+
+    document.getElementById('partnerForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const formData = {
+        shopName: document.getElementById('shopName').value.trim(),
+        ownerName: document.getElementById('ownerName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        locality: document.getElementById('locality').value.trim(),
+        category: document.getElementById('category').value,
+        about: document.getElementById('about').value.trim()
+      };
+
+      if(!formData.shopName || !formData.ownerName || !formData.email || !formData.phone){
+        alert('Please fill all required fields!');
+        return;
+      }
+
+      emailjs.send('service_4jhdrif', 'template_nhc5g66', {
+        subject: 'New Partner Registration',
+        message: `New partner request received:\n\n
+        Shop Name: ${formData.shopName}\n
+        Owner: ${formData.ownerName}\n
+        Email: ${formData.email}\n
+        Phone: ${formData.phone}\n
+        Locality: ${formData.locality}\n
+        Category: ${formData.category}\n
+        About: ${formData.about}`
+      })
+      .then(() => {
+        alert('Your application has been submitted successfully!');
+        window.location.href = 'partners.html';
+      })
+      .catch(() => {
+        alert('Failed to send application. Please try again.');
+      });
+    });
+  </script>
+
+</body>
+</html>

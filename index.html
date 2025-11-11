@@ -11,34 +11,60 @@
 <body class="bg-white font-sans">
 
   <!-- Navbar -->
-  <header class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2">
-        <img src="assets/logo.png" alt="Bridge4Meal Logo" class="h-10 w-10 object-contain">
-        <span class="text-xl font-semibold text-gray-800">Bridge4Meal</span>
-      </a>
+<header class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <img src="assets/logo.png" alt="Bridge4Meal Logo" class="h-10 w-10 object-contain">
+      <span class="text-xl font-semibold text-gray-800">Bridge4Meal</span>
+    </a>
 
-      <nav class="hidden md:flex items-center gap-6 text-gray-700 font-medium">
-        <a href="#home" class="hover:text-blue-600">Home</a>
-        <a href="#services" class="hover:text-blue-600">Services</a>
-        <a href="#contact" class="hover:text-blue-600">Contact</a>
-        <a href="join.html" class="hover:text-blue-600">Join as Worker</a>
-        <a id="navSign" href="login.html" class="px-3 py-1 border rounded text-pink-500">Sign In / Sign Up</a>
-        <button id="logoutBtn" class="px-3 py-1 border rounded hidden">Logout</button>
-      </nav>
-
-      <button id="mobileMenuBtn" class="md:hidden text-3xl text-gray-700">☰</button>
-    </div>
-
-    <div id="mobileMenu" class="hidden bg-white px-6 pb-4 flex flex-col gap-3 text-gray-700 font-medium md:hidden">
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex items-center gap-6 text-gray-700 font-medium relative">
       <a href="#home" class="hover:text-blue-600">Home</a>
       <a href="#services" class="hover:text-blue-600">Services</a>
+
+      <!-- Dropdown -->
+      <div class="relative group">
+        <button class="hover:text-blue-600 flex items-center gap-1 focus:outline-none">
+          Impact ⌄
+        </button>
+        <div class="hidden group-hover:flex flex-col absolute bg-white shadow-md rounded-lg mt-2 py-2 w-40">
+          <a href="partners.html" class="px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Partners</a>
+          <a href="donate.html" class="px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Donate</a>
+        </div>
+      </div>
+
       <a href="#contact" class="hover:text-blue-600">Contact</a>
       <a href="join.html" class="hover:text-blue-600">Join as Worker</a>
-      <a id="mobileSign" href="login.html" class="px-3 py-1 border rounded text-pink-500">Sign In / Sign Up</a>
-      <button id="bookWorkerBtnMobile" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Book Worker</button>
-    </div>
-  </header>
+      <a id="navSign" href="login.html" class="px-3 py-1 border rounded text-pink-500 hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white transition">Sign In / Sign Up</a>
+      <button id="logoutBtn" class="px-3 py-1 border rounded hidden text-gray-700 hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white transition">Logout</button>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobileMenuBtn" class="md:hidden text-3xl text-gray-700 focus:outline-none">☰</button>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobileMenu" class="hidden bg-white px-6 pb-4 flex flex-col gap-3 text-gray-700 font-medium md:hidden shadow-md">
+    <a href="#home" class="hover:text-blue-600">Home</a>
+    <a href="#services" class="hover:text-blue-600">Services</a>
+
+    <!-- Mobile Dropdown (Impact) -->
+    <details class="border rounded-lg">
+      <summary class="cursor-pointer py-2 px-3 hover:text-blue-600">Impact</summary>
+      <div class="flex flex-col pl-6 py-2 gap-2">
+        <a href="partners.html" class="hover:text-blue-600">Partners</a>
+        <a href="donate.html" class="hover:text-blue-600">Donate</a>
+      </div>
+    </details>
+
+    <a href="#contact" class="hover:text-blue-600">Contact</a>
+    <a href="join.html" class="hover:text-blue-600">Join as Worker</a>
+    <a id="mobileSign" href="login.html" class="px-3 py-1 border rounded text-pink-500 text-center">Sign In / Sign Up</a>
+    <button id="logoutBtnMobile" class="px-3 py-1 border rounded hidden text-gray-700">Logout</button>
+  </div>
+</header>
+
 
   <!-- HERO -->
   <section id="home" class="pt-28 pb-16 text-center bg-gradient-to-br from-pink-50 via-blue-50 to-white">
@@ -47,34 +73,109 @@
     </h1>
     <p class="text-gray-600 max-w-2xl mx-auto">Register & login to book a worker — each booking feeds a meal.</p>
   </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-center mb-6">Our Services</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-
-        <!-- SERVICE TEMPLATE -->
-        <script>
-          const services = [
-            "Mason (Raj Mistri)", "Helper", "Carpenter", "Electrician", "Construction Worker",
-            "Bar Bender", "AC / Fridge Repair Technician", "Bike / Auto Repair Mechanic",
-            "Polisher", "Painter", "House Cleaner / Maid / Sweeper", "Cook",
-            "Gardener", "Security Guard", "Car Cleaner / Driver"
-          ];
-          document.write(
-            services.map(s=>`
-              <div class="service-card">
-                ${s}
-                <button onclick="serviceClickHandler('${s}')" class="mt-2 px-3 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700">Book Now</button>
-              </div>
-            `).join('')
-          );
-        </script>
-
-      </div>
+  <!-- ABOUT US -->
+<section id="about" class="py-16 bg-gradient-to-r from-blue-50 via-white to-pink-50">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+    
+    <!-- Left Text -->
+    <div>
+      <h2 class="text-3xl font-bold mb-4 text-gray-800">
+        About <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-blue-500">Bridge4Meal</span>
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Bridge4Meal is a social startup built to solve two real problems at once — <b>unemployment</b> and <b>hunger</b>.  
+        We connect people who need trusted local workers with skilled individuals who are ready to work.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Every time someone books a worker through Bridge4Meal, we donate a meal to someone in need.  
+        So, your service booking doesn’t just get the job done — it also brings hope to a hungry soul.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Together, we’re building a bridge between <b>work and welfare</b> — empowering workers and feeding the needy, one job at a time.
+      </p>
+      <a href="#services" 
+         class="inline-block mt-4 px-6 py-3 bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-lg shadow hover:opacity-90 transition">
+        Explore Services →
+      </a>
     </div>
+
+    <!-- Right Image -->
+    <div class="flex justify-center">
+      <img src="assets/about-illustration.png" alt="Bridge4Meal mission illustration"
+           class="w-80 md:w-96 rounded-2xl shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105">
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-16 bg-gradient-to-b from-white via-blue-50 to-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-4">Our Services</h2>
+    <p class="text-center text-gray-600 mb-10">Hire skilled professionals for any household or construction need — every booking feeds a meal.</p>
+
+    <!-- Scroll Buttons -->
+    <div class="flex justify-between items-center mb-4">
+      <button id="scrollLeft" class="p-2 rounded-full bg-white shadow hover:bg-gray-100">&#10094;</button>
+      <button id="scrollRight" class="p-2 rounded-full bg-white shadow hover:bg-gray-100">&#10095;</button>
+    </div>
+
+    <!-- Scrollable Container -->
+    <div id="servicesScroll" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 hide-scrollbar">
+      <!-- Cards will be inserted by JS -->
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hide scrollbar for a cleaner look */
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<script>
+  const services = [
+    { name: "Mason (Raj Mistri)", icon: "🏗️" },
+    { name: "Helper", icon: "🤝" },
+    { name: "Carpenter", icon: "🪚" },
+    { name: "Electrician", icon: "💡" },
+    { name: "Construction Worker", icon: "👷" },
+    { name: "Bar Bender", icon: "🔧" },
+    { name: "AC / Fridge Repair Technician", icon: "❄️" },
+    { name: "Bike / Auto Repair Mechanic", icon: "🛠️" },
+    { name: "Polisher", icon: "✨" },
+    { name: "Painter", icon: "🎨" },
+    { name: "House Cleaner / Maid / Sweeper", icon: "🧹" },
+    { name: "Cook", icon: "👨‍🍳" },
+    { name: "Gardener", icon: "🌿" },
+    { name: "Security Guard", icon: "🛡️" },
+    { name: "Car Cleaner / Driver", icon: "🚗" }
+  ];
+
+  const container = document.getElementById("servicesScroll");
+  container.innerHTML = services.map(s => `
+    <div class="snap-center flex-shrink-0 w-64 bg-white/70 backdrop-blur-lg border border-gray-200 shadow-sm hover:shadow-xl rounded-2xl p-6 flex flex-col items-center justify-between text-center transition-transform duration-300 hover:scale-[1.04]">
+      <div class="text-5xl mb-3">${s.icon}</div>
+      <h3 class="text-lg font-semibold text-gray-800">${s.name}</h3>
+      <button onclick="serviceClickHandler('${s.name}')"
+        class="mt-4 px-5 py-2 bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-lg hover:shadow-lg transition-all">
+        Book Now
+      </button>
+    </div>
+  `).join('');
+
+  // Scroll buttons
+  const scrollContainer = document.getElementById('servicesScroll');
+  document.getElementById('scrollLeft').addEventListener('click', () => {
+    scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
+  });
+  document.getElementById('scrollRight').addEventListener('click', () => {
+    scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
+  });
+</script>
+
   </section>
+
 
   <!-- CONTACT -->
   <section id="contact" class="py-12 bg-blue-50">

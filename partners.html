@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Our Partners - Bridge4Meal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white font-sans text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="assets/logo.png" alt="Bridge4Meal Logo" class="h-10 w-10 object-contain">
+        <span class="text-xl font-semibold text-gray-800">Bridge4Meal</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-gray-700 font-medium">
+        <a href="index.html#home" class="hover:text-blue-600">Home</a>
+        <a href="index.html#services" class="hover:text-blue-600">Services</a>
+        <a href="partners.html" class="text-blue-600 font-semibold">Partners</a>
+        <a href="index.html#contact" class="hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pt-28">
+
+    <!-- Hero Section -->
+    <section class="text-center py-20 bg-gradient-to-r from-blue-50 via-white to-pink-50">
+      <h1 class="text-4xl font-bold mb-3">Bridge4Meal Partnership Network</h1>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Collaborating with local suppliers, shopkeepers, and support organizations to empower workers, provide materials, and expand opportunities.
+      </p>
+    </section>
+
+    <!-- Why Partner Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Why Partner with Bridge4Meal?</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+          <div class="bg-blue-50 p-6 rounded-xl shadow hover:shadow-lg transition">
+            <div class="text-3xl mb-2">🤝</div>
+            <h3 class="font-semibold mb-2">Connect with Local Projects</h3>
+            <p>Partner with us to supply construction or maintenance materials for verified customer projects.</p>
+          </div>
+
+          <div class="bg-blue-50 p-6 rounded-xl shadow hover:shadow-lg transition">
+            <div class="text-3xl mb-2">💼</div>
+            <h3 class="font-semibold mb-2">Free Listing & Exposure</h3>
+            <p>Showcase your shop on our platform and attract customers from your nearby areas.</p>
+          </div>
+
+          <div class="bg-blue-50 p-6 rounded-xl shadow hover:shadow-lg transition">
+            <div class="text-3xl mb-2">🚚</div>
+            <h3 class="font-semibold mb-2">Faster Delivery</h3>
+            <p>Get orders directly through Bridge4Meal workers who source from your shop for their jobs.</p>
+          </div>
+
+          <div class="bg-blue-50 p-6 rounded-xl shadow hover:shadow-lg transition">
+            <div class="text-3xl mb-2">🌍</div>
+            <h3 class="font-semibold mb-2">Local Economic Growth</h3>
+            <p>Empower your community by helping workers earn more and contribute to meal donations.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Partners Section -->
+    <section class="py-16 bg-gradient-to-b from-white to-blue-50">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Our Featured Partners</h2>
+        <p class="text-center text-gray-600 mb-10">
+          We proudly collaborate with these local suppliers and hardware stores.
+        </p>
+
+        <div id="partnerGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
+
+        <div class="text-center mt-12">
+          <a href="partner-join.html" class="inline-block px-8 py-3 bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-full shadow hover:opacity-90 transition">
+            Become a Partner Today →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Partners Section (InternAdda Collaboration) -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-6">Our Support Partners</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto mb-10">
+          We’re proud to collaborate with organizations that help us empower both workers and students through education, training, and real opportunities.
+        </p>
+
+        <div class="flex flex-wrap justify-center items-center gap-10">
+          <!-- InternAdda Partner Card -->
+          <div class="bg-gradient-to-r from-pink-50 to-blue-50 rounded-2xl shadow-md p-6 w-72 hover:shadow-xl transition">
+            <img src="assets/internadda-logo.jpg" alt="InternAdda Logo" class="w-28 h-28 mx-auto object-contain mb-4 rounded-full bg-white p-3 shadow-sm">
+            <h3 class="text-xl font-semibold text-gray-800">InternAdda</h3>
+            <p class="text-gray-600 text-sm mt-2">
+              Partnering with Bridge4Meal to provide internships and real-world learning opportunities for students passionate about social impact.
+            </p>
+            <a href="https://internadda.com/" target="_blank" class="inline-block mt-4 px-4 py-2 bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-lg text-sm hover:opacity-90 transition">
+              Visit Website
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Partner Modal -->
+  <div id="partnerModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl shadow-lg p-6 max-w-md w-full relative">
+      <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl">&times;</button>
+      <img id="modalLogo" src="" class="w-24 h-24 mx-auto mb-3 object-contain rounded-full shadow">
+      <h3 id="modalName" class="text-2xl font-bold text-center mb-2"></h3>
+      <p id="modalDetails" class="text-gray-600 text-center mb-2"></p>
+      <p class="text-center">
+        📞 <a id="modalPhone" href="#" class="text-blue-600"></a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const partners = [
+      { name: "Sharma Paints & Hardware", logo: "assets/partner1.png", details: "Sector 12, Gurgaon — Paints, tools, and hardware essentials", phone: "+91 9812345678" },
+      { name: "Singh Electricals", logo: "assets/partner2.png", details: "Rohini, Delhi — Electrical fittings & home supplies", phone: "+91 9876543210" },
+      { name: "Gupta Sanitary & Tiles", logo: "assets/partner3.png", details: "Model Town, Ludhiana — Sanitary materials & tiles", phone: "+91 9900012345" },
+      { name: "Mehta Tools & Builders", logo: "assets/partner4.png", details: "Noida — Construction & builder tools", phone: "+91 9876571234" }
+    ];
+
+    const grid = document.getElementById("partnerGrid");
+    grid.innerHTML = partners.map(p => `
+      <div onclick="showPartner('${p.name}')" class="bg-white p-6 rounded-xl shadow hover:shadow-xl transition cursor-pointer text-center">
+        <img src="${p.logo}" alt="${p.name}" class="w-24 h-24 mx-auto rounded-full mb-3 object-contain">
+        <h3 class="font-semibold text-lg text-gray-800">${p.name}</h3>
+        <p class="text-gray-600 text-sm">${p.details}</p>
+      </div>
+    `).join('');
+
+    const modal = document.getElementById("partnerModal");
+    const closeModal = document.getElementById("closeModal");
+    window.showPartner = function(name) {
+      const p = partners.find(x => x.name === name);
+      if (!p) return;
+      document.getElementById("modalLogo").src = p.logo;
+      document.getElementById("modalName").textContent = p.name;
+      document.getElementById("modalDetails").textContent = p.details;
+      const phoneLink = document.getElementById("modalPhone");
+      phoneLink.textContent = p.phone;
+      phoneLink.href = `tel:${p.phone.replace(/\s/g, '')}`;
+      modal.classList.remove("hidden");
+    };
+    closeModal.addEventListener("click", ()=> modal.classList.add("hidden"));
+    modal.addEventListener("click", e => { if(e.target === modal) modal.classList.add("hidden"); });
+  </script>
+
+</body>
+</html>

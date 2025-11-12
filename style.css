@@ -1,4 +1,5 @@
-.book-btn{
+./* NOTE: dot before class name is required */
+.book-btn {
   margin-top: 6px;
   width: 100%;
   padding: 6px 0;
@@ -7,7 +8,14 @@
   background: linear-gradient(to right, #ec4899, #3b82f6);
   color: white;
   transition: 0.2s;
+  display: inline-block;      /* makes it clickable area predictable */
+  text-align: center;
+  cursor: pointer;            /* shows pointer */
+  position: relative;         /* allow z-index to work */
+  z-index: 2;                 /* keep it above accidental overlays */
+  user-select: none;
+  -webkit-tap-highlight-color: transparent; /* mobile */
 }
-.book-btn:hover{
+.book-btn:hover {
   opacity: 0.9;
 }

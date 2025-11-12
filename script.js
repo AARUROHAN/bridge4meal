@@ -91,4 +91,34 @@ document.addEventListener('DOMContentLoaded', function(){
     if(navSign) { navSign.textContent = 'Sign In / Sign Up'; navSign.href = 'login.html'; }
     if(mobileSign) { mobileSign.textContent = 'Sign In / Sign Up'; mobileSign.href = 'login.html'; }
   }
+
+  /* -------------------------------------------------
+     🟢 Dropdown Fix for “Impact” Menu (Click Based)
+     ------------------------------------------------- */
+  const dropdownBtn = document.querySelector('.group > button');
+  const dropdownMenu = document.querySelector('.group > div');
+
+  if(dropdownBtn && dropdownMenu){
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('hidden');
+      dropdownMenu.classList.toggle('flex');
+
+      // Optional: rotate the arrow symbol
+      if (dropdownBtn.textContent.includes('⌄')) {
+        dropdownBtn.textContent = 'Impact ⌃';
+      } else {
+        dropdownBtn.textContent = 'Impact ⌄';
+      }
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.group')) {
+        dropdownMenu.classList.add('hidden');
+        dropdownMenu.classList.remove('flex');
+        dropdownBtn.textContent = 'Impact ⌄'; // reset arrow
+      }
+    });
+  }
 });
